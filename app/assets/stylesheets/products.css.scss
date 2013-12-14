@@ -1,0 +1,26 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#products { margin: 10px auto; }
+.ajax-loader {
+  background: url('ajax-loader.gif')  no-repeat;
+  width: 32px;
+  height: 32px;
+  margin: 10px auto;
+}
+.footer {
+  background-color: black;
+  color: white;
+  height: 30px;
+  bottom: 0;
+}
+.sale-price {
+  font-size: 150%;
+  font-weight: bold;
+  color: red;
+}
+.disabled-price {
+  font-size: 80%;
+  color: gray;
+  text-decoration: line-through;
+}

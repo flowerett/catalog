@@ -1,0 +1,28 @@
+.row
+  .large-12.large-centered.columns
+    %p#notice= notice
+    %h1 Upload products from file:
+
+    = form_tag upload_products_url, multipart: true do
+      .row
+        .columns.small-6
+          .row
+            .small-2.columns
+              = label_tag(:file, "File:", :class => "right")
+            .small-8.columns
+              = file_field_tag(:file)
+            .small-2.columns
+              = submit_tag("Upload", :class => "button tiny")
+    %hr/
+.row
+  .large-12.large-centered.columns
+    %h1= "XML catalog - #{Product.count} positions"
+    %table#products.large-12
+      %tr
+        - @xml_keys.each do |key|
+          %th= key.upcase
+
+      = render @products
+.row
+  .pagination-centered
+    = will_paginate @products
