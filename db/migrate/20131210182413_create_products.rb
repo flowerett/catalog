@@ -1,5 +1,5 @@
 class CreateProducts < ActiveRecord::Migration
-  def change
+  def up
     create_table :products do |t|
       t.string :title
       t.text :description
@@ -10,5 +10,14 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :products, :title
+    add_index :products, :price
+    add_index :products, :inet_price
+    add_index :products, :rating
+  end
+
+  def down
+    drop_table :products
   end
 end

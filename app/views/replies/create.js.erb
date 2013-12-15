@@ -1,0 +1,30 @@
+$('.new_reply').find('.error').hide();
+
+<% if @reply.errors[:name].any? %>
+  $('.new_reply').
+    find('.name-field').
+    find('.error').
+    html("<%=j render 'error', :locals => { :field => :name } %>").
+    css('display', 'block');
+<% end %>
+
+<% if @reply.errors[:email].any? %>
+  $('.new_reply').
+    find('.email-field').
+    find('.error').
+    html("<%=j render 'error', :locals => { :field => :email } %>").
+    css('display', 'block');
+<% end %>
+
+<% if @reply.errors[:content].any? %>
+  $('.new_reply').
+    find('.content-field').
+    find('.error').
+    html("<%=j render 'error', :locals => { :field => :content } %>").
+    css('display', 'block');
+<% end %>
+
+<% unless @reply.errors.any? %>
+  $('#replies').prepend("<%=j render @reply %>");
+  $('.new_reply').trigger('reset');
+<% end %>

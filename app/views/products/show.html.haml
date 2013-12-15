@@ -1,0 +1,63 @@
+- if notice
+  .alert-box.info
+    = notice
+.row
+  .small-10.columns
+    %h3= @product.title
+
+.row
+  .small-3.columns= image_tag(@product.image)
+
+.row
+  .small-3.columns
+    %h3 Description:
+.row
+  .small-12.columns
+    %p= @product.description
+
+.row
+  .small-6.columns
+    %h3 Rating:
+    - @product.rating.times do
+      %i.fi-star.medium.style1
+
+.row
+  .small-3.columns
+    %h3
+      Price:
+      = price_for_product @product
+%hr
+
+#replies.row
+  %h3 Replies:
+  = render @product.replies.order('created_at DESC')
+
+.row
+  /                              :html => { 'data-abide' => true },
+  = form_for [@product, @reply], remote: true do |f|
+    %fieldset
+      %legend New Reply
+      = f.hidden_field 'product_id', value: @product.id
+      .row
+        .large-6.columns
+          .name-field
+            = f.label :name
+            = f.text_field :name #, :required => true, :pattern => "[a-zA-Z]+"
+            %small.error.dn name is required
+        .large-6.columns
+          .email-field
+            = f.label :email
+            = f.text_field :email #, :required => true, :pattern => "([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})"
+            %small.error.dn
+      .row
+        .large-10.columns
+          .content-field
+            = f.label :content
+            = f.text_area :content, :required => true
+            %small.error.dn
+        .large-2.columns
+          = f.submit "New reply", :class => "button medium"
+
+
+.row
+  = link_to 'Back to Products', products_path, :class => "button tiny"

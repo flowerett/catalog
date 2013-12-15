@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'builder'
 
 describe Product do
+  it { should have_many :replies }
+
   describe '.upload' do
     let(:xml) do
       xml = ''

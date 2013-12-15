@@ -1,9 +1,10 @@
 Xml::Application.routes.draw do
 
-  resources :products do
+  resources :products, only: [:index, :show] do
     collection do
       post :upload
     end
+    resources :replies, only: [:create]
   end
 
   root 'products#index'

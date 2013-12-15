@@ -3,6 +3,10 @@ class Product < ActiveRecord::Base
 
   XML_KEYS = %w(product_id title description rating price inet_price image)
 
+  has_many :replies, dependent: :destroy
+
+  accepts_nested_attributes_for :replies
+
   def self.upload(file)
     xml = Nokogiri::XML(file)
 

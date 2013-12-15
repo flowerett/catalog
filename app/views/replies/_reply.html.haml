@@ -1,0 +1,20 @@
+- if reply.persisted?
+  .panel
+    .row
+      .small-4.columns
+        %h6
+          %strong Name:
+          = reply.name
+      .small-5.columns
+        %h6
+          %strong Email:
+          = reply.email
+      .small-3.columns
+        %h6
+          %strong Date:
+          = reply.created_at.try(:strftime, "%d.%m.%Y %H:%m")
+    .row
+      .small-12.columns
+        %h6
+          %strong Message:
+          = reply.content
