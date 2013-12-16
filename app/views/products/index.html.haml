@@ -1,6 +1,8 @@
 .row
   .large-12.large-centered.columns
-    %p#notice= notice
+    - if notice
+      .alert-box.success= notice
+
     %h1 Upload products from file:
 
     = form_tag upload_products_url, multipart: true do

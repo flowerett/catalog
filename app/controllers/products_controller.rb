@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
   end
 
   def upload
-    Product.upload(params[:file])
+    success = Product.upload(params[:file])
 
-    redirect_to products_url, notice: "XML Uploaded"
+    redirect_to products_url, notice: "#{success} XML items uploaded!"
   end
 
   def show
