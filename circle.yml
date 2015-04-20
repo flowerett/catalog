@@ -2,14 +2,14 @@ machine:
   ruby:
     version: 2.2.0
 
-checkout:
-  post:
-    - cp $PWD/config/secrets.yml{.sample,}
-    - mkdir -p public/cache
+# checkout:
+#   post:
+#     # - cp $PWD/config/secrets.yml{.sample,}
+#     # - mkdir -p public/cache
 
 database:
   override:
-    - cp $PWD/config/database.yml{.sample,}
+    # - cp $PWD/config/database.yml{.sample,}
     - bundle exec rake db:create db:schema:load --trace
 
 dependencies:
